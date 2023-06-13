@@ -1,0 +1,8 @@
+﻿@model List<State>
+
+<h1>States</h1>
+
+@foreach (var state in Model)
+{
+    <p><strong>@state.Abbreviation</strong>: <a href="states/@state.Id">@state.Name</a></p>
+}
