@@ -41,4 +41,4 @@ Update the application so that the pre-existing CityCRUD tests will pass.
 
 This assessment has a total of 20 points.  A score of 15 or higher is a pass.
 
-
+As a reminder, this assessment is for students and instructors to determine if there are any areas that need additional reinforcement!
