@@ -2,7 +2,7 @@
 
 ### Setup
 * In Package Manager Console
-* `remove-database` and then
+* `drop-database` and then
 * `update-database`
 
 ## Exercise
