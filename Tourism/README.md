@@ -28,6 +28,8 @@ Update the application so that the pre-existing CityCRUD tests will pass.
 
 ## Questions (5 points)
 
+Edit this file with your answers.
+
 1. Create a Diagram of the Request/Response cycle that would occur when a user creates a city.  Include as much detail as possible!  **Send and image/screenshot of your diagram to your instructors via slack.** (2 points)
 
 2. How does a form submission know what request should be made? Use examples.
