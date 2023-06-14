@@ -50,7 +50,7 @@ namespace Tourism.FeatureTests
             var html = await response.Content.ReadAsStringAsync();
 
             Assert.Contains("Add city to Iowa", html);
-            Assert.Contains("<form method=\"post\" action=\"/states/1/cities/new\">", html);
+            Assert.Contains("<form method=\"post\" action=\"/states/1/cities\">", html);
         }
 
         [Fact]
@@ -73,6 +73,9 @@ namespace Tourism.FeatureTests
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.Contains("Cities in Iowa", html);
             Assert.Contains("Des Moines", html);
+
+            Assert.Equal(1, context.Cities.Count());
+            Assert.Equal("Des Moines", context.Cities.First().Name);
         }
 
         private TourismContext GetDbContext()
