@@ -1,4 +1,9 @@
-﻿# Week 3 Assessment
+# Week 3 Assessment
+
+### Setup
+* In Package Manager Console
+* `remove-database` and then
+* `update-database`
 
 ## Exercise
 
