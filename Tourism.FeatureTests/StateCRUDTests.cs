@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
+﻿using System.Net;
+using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Tourism.DataAccess;
 using Tourism.Models;
@@ -51,7 +52,20 @@ namespace Tourism.FeatureTests
             Assert.DoesNotContain("Colorado", html);
         }
 
-        private TourismContext GetDbContext()
+        [Fact]
+		public async Task New_ReturnsViewWithForm()
+		{
+			var context = GetDbContext();
+			var client = _factory.CreateClient();
+
+			var response = await client.GetAsync($"/States/New");
+			var html = await response.Content.ReadAsStringAsync();
+
+			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+			Assert.Contains($"<form method=\"post\" action=\"/states\">", html);
+		}
+
+		private TourismContext GetDbContext()
         {
             var optionsBuilder = new DbContextOptionsBuilder<TourismContext>();
             optionsBuilder.UseInMemoryDatabase("TestDatabase");
