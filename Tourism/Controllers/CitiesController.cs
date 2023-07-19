@@ -25,9 +25,14 @@ namespace Tourism.Controllers
             return View(state);
         }
 
-        public IActionResult New()
+        // GET: /states/:stateId/cities/new
+        [Route("States/{stateId:int}/Cities/new")]
+        public IActionResult New(int stateId)
         {
-            var state = _context.States;
+            var state = _context.States
+                .Where(s => s.Id == stateId)
+                .Include(s => s.Cities)
+                .First();
 
             return View(state);
         }
