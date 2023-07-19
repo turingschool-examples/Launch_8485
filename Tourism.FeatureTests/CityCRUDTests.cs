@@ -21,6 +21,48 @@ namespace Tourism.FeatureTests
         }
 
         [Fact]
+		public async Task Index_ReturnsViewWithCities()
+		{
+			var context = GetDbContext();
+			var client = _factory.CreateClient();
+
+			State colorado = new State { Name = "Colorado", Abbreviation = "CO" };
+			City denver = new City { Name = "Denver", State = colorado };
+			City boulder = new City { Name = "Boulder", State = colorado };
+            colorado.Cities.Add(denver);
+            colorado.Cities.Add(boulder);
+
+            State iowa = new State { Name = "Iowa", Abbreviation = "IA" };
+			City desMoines = new City { Name = "Des Moines", State = iowa };
+			City ames = new City { Name = "Ames", State = iowa };
+            iowa.Cities.Add(desMoines);
+            iowa.Cities.Add(ames);
+
+            context.States.Add(colorado);
+            context.States.Add(iowa);
+
+            context.SaveChanges();
+
+			var response = await client.GetAsync($"/States/{colorado.Id}/Cities");
+			// Make sure the route exists!
+			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+			var html = await response.Content.ReadAsStringAsync();
+
+			// Make sure the page contains the correct info
+			Assert.Contains(colorado.Name, html);
+			Assert.Contains(denver.Name, html);
+			Assert.Contains(boulder.Name, html);
+
+			// Make sure the page does not contain info for other states or cities
+			Assert.DoesNotContain(iowa.Name, html);
+			Assert.DoesNotContain(desMoines.Name, html);
+			Assert.DoesNotContain(ames.Name, html);
+			Assert.DoesNotContain("Raleigh", html);
+		}
+
+
+		[Fact]
         public async void Index_IncludesLinktoNew()
         {
             var context = GetDbContext();

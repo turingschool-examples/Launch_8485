@@ -1,0 +1,8 @@
+﻿@model State
+
+<h1>@Model.Name</h1>
+
+@foreach (var city in Model.Cities)
+{
+    <p>@city.Name</p>
+}
