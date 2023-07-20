@@ -37,15 +37,33 @@ namespace Tourism.Controllers
             return View(state);
         }
 
-        //[Route("/states/{stateId:int}/cities")]
-        //public IActionResult Create(int stateId, City city)
-        //{
-        //    var city = _context.Cities.Find(stateId);
+        [HttpPost]
+        [Route("/states/{stateId:int}/cities")]
+        public IActionResult Create(int stateId, City city)
+        {
+            //var state = _context.City.Find(stateId);
+            var state = _context.States
+                .Where(s => s.Id == stateId)
+                .Include(s => s.Cities)
+                .First();
 
-        //    _context.Add(city);
+            state.Cities.Add(city);
+            _context.SaveChanges();
+
+            return RedirectToAction("index", new { stateId = state.Id } );
+        }
+
+        //public IActionResult Create(int movieId, Review review)
+        //{
+        //    var movie = _context.Movies
+        //        .Where(m => m.Id == movieId)
+        //        .Include(m => m.Reviews)
+        //        .First();
+        //    movie.Reviews.Add(review);
         //    _context.SaveChanges();
 
-        //    return RedirectToAction();
+        //    return RedirectToAction("index", new { movieId = movie.Id });
         //}
     }
+
 }
