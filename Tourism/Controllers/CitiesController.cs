@@ -25,8 +25,7 @@ namespace Tourism.Controllers
             return View(state);
         }
 
-        // GET: /states/:stateId/cities/new
-        [Route("States/{stateId:int}/Cities/new")]
+        [Route("states/{stateId:int}/cities/new")]
         public IActionResult New(int stateId)
         {
             var state = _context.States
@@ -43,13 +42,13 @@ namespace Tourism.Controllers
         {
             var state = _context.States
                 .Where(s => s.Id == stateId)
-                .Include(s => s.Cities)
+                //.Include(s => s.Cities)
                 .First();
 
             state.Cities.Add(city);
             _context.SaveChanges();
 
-            return RedirectToAction("index", new { stateId = state.Id } );
+            return RedirectToAction("index", new { stateId = state.Id });
         }
-
+    }
 }
