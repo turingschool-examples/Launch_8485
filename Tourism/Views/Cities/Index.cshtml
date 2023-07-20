@@ -1,13 +1,14 @@
 ﻿@model State
 
-<h1>Cities in @Model.Name</h1>
+<h1>@Model.Name</h1>
+
+<p>Cities in @Model.Abbreviation</p>
 
 <ul>
-@foreach (var city in Model.Cities)
-{
-    <li>@city.Name</li>
-}
+    @foreach (var city in Model.Cities)
+    {
+        <li>@city.Name</li>
+    }
 </ul>
 
 <p><a href="/states/@Model.Id/cities/new">New City</a></p>
-
