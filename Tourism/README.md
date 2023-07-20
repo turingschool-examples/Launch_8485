@@ -1,48 +1,110 @@
-# Week 3 Assessment
+# Week 4 Assessment
 
 ### Setup
 * In Package Manager Console
 * `drop-database` and then
 * `update-database`
 
+Expand this section and run the following script in pgAdmin:
+```sql
+INSERT INTO states (name, abbreviation, time_zone)
+VALUES 
+	('Iowa', 'IA', 'Central'),
+	('Texas', 'TX', 'Central'),
+	('Colorado', 'CO', 'Mountain'),
+	('Virginia', 'VA', 'Eastern'),
+	('Oregon', 'OR', 'Eastern'),
+	('North Carolina', 'NC', 'Eastern'),
+	('British Columbia', 'BC', 'Pacific');
+
+INSERT INTO cities (name, state_id)
+VALUES 
+	('Ames', 1),
+	('Des Moines', 1),
+	('Houston', 2),
+	('Dallas', 2),
+	('Austin', 2),
+	('Denver', 3),
+	('Boulder', 3),
+	('Aurora', 3),
+	('Richmond', 4),
+	('Roanoke', 4),
+	('Alexandria', 4),
+	('Portland', 5),
+	('Salem', 5),
+	('Raleigh', 6),
+	('Kill Devil Hills', 6),
+	('Charlotte', 6),
+	('Vancouver', 7),
+	('Victoria', 7);
+```
+
 ## Exercise
 
 Your goal for this assessment is to have an application that allows a user to do the following:
-* Create a State by submitting a Form
-* See all the cities for a specific state (city index page)
-* Create a City for a State by submitting a form
+* Edit an existing State using a pre-populated form
+* Filter states by time zone using a link on the State Index page
+* Delete a state using a button on the State Index page
+* 
+Create a separate branch for each exercise. Merge each branch into `main` after completing each exercise.
 
-### Creating a State (3 points)
+### Editing a State (5 points)
 
-Update the application so that a user can create a State by submitting a form.
+Update the application so that a user can edit an existing State using a pre-populated form.
+* You will need to thoroughly test this functionality.
+* Do not break any currently passing tests.
+* e.g. The time zone for `Oregon` should be changed to `Pacific`.
+
+Note: Be sure to merge this branch into `main`!
+
+### Filter States by Time Zone (5 points)
+
+Update the application so that a user can filter States by time zone using links on the State Index page.
+* Include the following links: `Eastern`, `Central`, `Mountain`, `Pacific`, `Clear Filter`.
+	* The application should only display States in the selected time zone.
+	* The `Clear Filter` link should display all States.
 * You will need to thoroughly test this functionality. 
 * Do not break any currently passing tests.
+* e.g. Filtering on `Central` should display the states of `Iowa` and `Texas`.
 
-### City Index Page (3 points)
+Note: Be sure to merge this branch into `main`!
 
-Update the application so that a user could visit "/states/1/cities" to view all of the cities for a state (in this case, the state with id 1).
+### Delete a State (5 points)
+
+Update the application so that the user can delete a State using a button on the State Index page.
+* The deleted state should no longer appear on the State Index page.
+* Deleting a state should also delete all cities in that state.
 * You will need to thoroughly test this functionality. 
 * Do not break any currently passing tests.
+* * e.g. `British Columbia` is not a U.S. state. It should be deleted.
 
-### Create a City (9 points)
+Note: Be sure to merge this branch into `main`!
 
-Update the application so that the pre-existing CityCRUD tests will pass.
-* There is some starter code that is not yet working.
-* You may change any code in the Controllers, Views, and Models.
-* You may NOT change the pre-existing tests.
+### Stretch Goals 
+
+If you have time, create a new branch to work on the following:
+* Create buttons to delete an individual city from a state.
+* When deleting a State, the application should also delete all cities in that state.
+
 
 ## Questions (5 points)
 
 Edit this file with your answers.
 
-1. Create a Diagram of the Request/Response cycle that would occur when a user creates a city.  Include as much detail as possible!  **Send and image/screenshot of your diagram to your instructors via slack.** (2 points)
+1. What is the difference between `POST` and `PUT`?
+	* < Your answer >  
 
-2. How does a form submission know what request should be made? Use examples.
+2. What is the purpose of `ViewData`?
+	* < Your answer >  
 
-3. Imagine you are explaining how to create a resource to a co-worker.  How would you describe how the controller action `Create` works?
+3. If the State model of our Tourism application also has a field for `Region` (e.g. `Midwest`, `South`, etc.), what might the url be if want to filter for States in both the South region and Eastern time zone?
+	* < Your answer >  
 
-4. In our State creation functionality - what would happen if a user did not enter an Abbreviation before submitting the form?
+4. What is the purpose of the .Remove() method in the controller code? What do we need to pass in as a parameter when calling .Remove().
+	* < Your answer >  
 
+5. If you wanted to improve the UI of the State Index page, what would be the filepath of the CSS file you need to create? (Hint: to find the full path of a project file, right-click the file in Solution Explorer and select `Copy Full Path`. You can then paste the path elsewhere.)
+	* < Your answer >  
 
 ## Rubric
 
