@@ -56,8 +56,8 @@ Create a separate branch for each exercise. Merge each branch into `main` after 
 ### Editing a State (5 points)
 
 Update the application so that a user can edit an existing State using a pre-populated form.
-* Do not break any currently passing tests.
 * e.g. The time zone for `Oregon` should be changed to `Pacific`.
+* Do not break any currently passing tests.
 
 Note: Be sure to merge this branch into `main`!
 
@@ -67,8 +67,8 @@ Update the application so that a user can filter States by time zone using links
 * Include the following links: `Eastern`, `Central`, `Mountain`, `Pacific`, `Clear Filter`.
 	* The application should only display States in the selected time zone.
 	* The `Clear Filter` link should display all States.
-* Do not break any currently passing tests.
 * e.g. Filtering on `Central` should display the states of `Iowa` and `Texas`.
+* Do not break any currently passing tests.
 
 Note: Be sure to merge this branch into `main`!
 
@@ -77,16 +77,10 @@ Note: Be sure to merge this branch into `main`!
 Update the application so that the user can delete a State using a button on the State Index page.
 * The deleted state should no longer appear on the State Index page.
 * Deleting a state should also delete all cities in that state.
-* Do not break any currently passing tests.
 * e.g. `British Columbia` is not a U.S. state. It should be deleted.
+* Do not break any currently passing tests.
 
 Note: Be sure to merge this branch into `main`!
-
-### Stretch Goals 
-
-If you have time, create a new branch to work on the following:
-* Create buttons to delete an individual city from a state.
-* When deleting a State, the application should also delete all cities in that state.
 
 ## Questions (5 points)
 
