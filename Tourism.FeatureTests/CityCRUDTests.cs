@@ -26,13 +26,13 @@ namespace Tourism.FeatureTests
 			var context = GetDbContext();
 			var client = _factory.CreateClient();
 
-			State colorado = new State { Name = "Colorado", Abbreviation = "CO" };
+			State colorado = new State { Name = "Colorado", Abbreviation = "CO", TimeZone = "Mountain" };
 			City denver = new City { Name = "Denver", State = colorado };
 			City boulder = new City { Name = "Boulder", State = colorado };
             colorado.Cities.Add(denver);
             colorado.Cities.Add(boulder);
 
-            State iowa = new State { Name = "Iowa", Abbreviation = "IA" };
+            State iowa = new State { Name = "Iowa", Abbreviation = "IA", TimeZone = "Central" };
 			City desMoines = new City { Name = "Des Moines", State = iowa };
 			City ames = new City { Name = "Ames", State = iowa };
             iowa.Cities.Add(desMoines);
@@ -68,7 +68,7 @@ namespace Tourism.FeatureTests
             var context = GetDbContext();
             var client = _factory.CreateClient();
 
-            context.States.Add(new State { Name = "Iowa", Abbreviation = "IA" });
+            context.States.Add(new State { Name = "Iowa", Abbreviation = "IA", TimeZone = "Central" });
             context.SaveChanges();
 
             var response = await client.GetAsync("/states/1/cities");
@@ -85,7 +85,7 @@ namespace Tourism.FeatureTests
             var context = GetDbContext();
             var client = _factory.CreateClient();
 
-            context.States.Add(new State { Name = "Iowa", Abbreviation = "IA" });
+            context.States.Add(new State { Name = "Iowa", Abbreviation = "IA", TimeZone = "Central" });
             context.SaveChanges();
 
             var response = await client.GetAsync("/states/1/cities/new");
@@ -101,7 +101,7 @@ namespace Tourism.FeatureTests
             var context = GetDbContext();
             var client = _factory.CreateClient();
 
-            context.States.Add(new State { Name = "Iowa", Abbreviation = "IA" });
+            context.States.Add(new State { Name = "Iowa", Abbreviation = "IA", TimeZone = "Central" });
             context.SaveChanges();
 
             var formData = new Dictionary<string, string>

@@ -21,8 +21,8 @@ namespace Tourism.FeatureTests
             var context = GetDbContext();
             var client = _factory.CreateClient();
 
-            context.States.Add(new State { Name = "Iowa", Abbreviation = "IA" });
-            context.States.Add(new State { Name = "Colorado", Abbreviation = "CO" });
+            context.States.Add(new State { Name = "Iowa", Abbreviation = "IA", TimeZone = "Central" });
+            context.States.Add(new State { Name = "Colorado", Abbreviation = "CO", TimeZone = "Mountain" });
             context.SaveChanges();
 
             var response = await client.GetAsync("/states");
@@ -41,8 +41,8 @@ namespace Tourism.FeatureTests
             var context = GetDbContext();
             var client = _factory.CreateClient();
 
-            context.States.Add(new State { Name = "Iowa", Abbreviation = "IA" });
-            context.States.Add(new State { Name = "Colorado", Abbreviation = "CO" });
+            context.States.Add(new State { Name = "Iowa", Abbreviation = "IA", TimeZone = "Central" });
+            context.States.Add(new State { Name = "Colorado", Abbreviation = "CO", TimeZone = "Mountain" });
             context.SaveChanges();
 
             var response = await client.GetAsync("/states/1");
