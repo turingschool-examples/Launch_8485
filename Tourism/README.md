@@ -6,8 +6,8 @@
 * `update-database`
 
 Expand this section and run the following script in pgAdmin:
-<section class="answer" markdown="1">
-### SQL Script
+<section class="answer">
+<h3>SQL Script</h3>
 
 <pre>
 INSERT INTO states (name, abbreviation, time_zone)
