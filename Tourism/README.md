@@ -41,6 +41,7 @@ VALUES
 	('Vancouver', 7),
 	('Victoria', 7);
 </pre>
+
 </section>
 
 ## Exercise
