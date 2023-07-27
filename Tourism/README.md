@@ -53,7 +53,7 @@ Your goal for this assessment is to have an application that allows a user to do
 
 Create a separate branch for each exercise. Merge each branch into `main` after completing each exercise.
 
-### Editing a State (5 points)
+### Editing a State (5 points) //
 
 Update the application so that a user can edit an existing State using a pre-populated form.
 * e.g. The time zone for `Oregon` should be changed to `Pacific`.
