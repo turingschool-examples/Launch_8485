@@ -5,7 +5,7 @@
 * `drop-database` and then
 * `update-database`
 
-Expand this section and run the following script in pgAdmin:
+Run the following script in pgAdmin in the Tourism Database:
 <section class="answer">
 <h3>SQL Script</h3>
 
