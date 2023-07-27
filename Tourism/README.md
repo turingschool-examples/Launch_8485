@@ -64,11 +64,14 @@ Note: Be sure to merge this branch into `main`!
 ### Filter States by Time Zone (5 points)
 
 Update the application so that a user can filter States by time zone using links on the State Index page.
-* Include the following links: `Eastern`, `Central`, `Mountain`, `Pacific`, `Clear Filter`.
+* The links should list only the time zones represented in the data.
+* Include one additional list to display `All States`.
 	* The application should only display States in the selected time zone.
 	* The `Clear Filter` link should display all States.
 * e.g. Filtering on `Central` should display the states of `Iowa` and `Texas`.
 * Do not break any currently passing tests.
+
+* the following links: `Eastern`, `Central`, `Mountain`, `Pacific`, `Clear Filter`.
 
 Note: Be sure to merge this branch into `main`!
 
