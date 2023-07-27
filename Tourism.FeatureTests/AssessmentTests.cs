@@ -139,5 +139,73 @@ namespace Tourism.FeatureTests
         }
 
         // DELETE tests
+        [Fact]
+        public async Task Delete_RemovesStateFromIndexPage()
+        {
+            // Arrange
+            var context = GetDbContext();
+            var client = _factory.CreateClient();
+
+            State california = new State { Name = "California", Abbreviation = "CA", TimeZone = "Pacific" };
+            State ohio = new State { Name = "Ohio", Abbreviation = "OH", TimeZone = "Mountain" };
+            context.States.Add(california);
+            context.States.Add(ohio);
+            context.SaveChanges();
+
+            // Act
+            var response = await client.PostAsync($"/states/delete/{ohio.Id}", null);
+            var html = await response.Content.ReadAsStringAsync();
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+            Assert.DoesNotContain("Ohio", html);
+        }
+
+        [Fact]
+        public async Task Delete_OnlyDeletesOneState()
+        {
+            // Arrange
+            var context = GetDbContext();
+            var client = _factory.CreateClient();
+
+            State california = new State { Name = "California", Abbreviation = "CA", TimeZone = "Pacific" };
+            State ohio = new State { Name = "Ohio", Abbreviation = "OH", TimeZone = "Mountain" };
+            context.States.Add(california);
+            context.States.Add(ohio);
+            context.SaveChanges();
+
+            // Act
+            var response = await client.PostAsync($"/states/delete/{ohio.Id}", null);
+            var html = await response.Content.ReadAsStringAsync();
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+            Assert.Contains("California", html);
+        }
+
+        [Fact]
+        public async Task Delete_RemovesAllDeletedCitiesFromState()
+        {
+            // Arrange
+            var context = GetDbContext();
+            var client = _factory.CreateClient();
+
+            State california = new State { Name = "California", Abbreviation = "CA", TimeZone = "Pacific" };
+            City losAngeles = new City { Name = "Los Angeles", State = california };
+            City sacramento = new City { Name = "Sacramento", State = california };
+
+            california.Cities.Add(losAngeles);
+            california.Cities.Add(sacramento);
+            context.States.Add(california);
+
+            context.SaveChanges();
+
+            // Act
+            var response = await client.PostAsync($"/states/delete/{california.Id}", null);
+
+            // Assert
+            var savedState = context.Cities.FirstOrDefault(c => c.State == california);
+            Assert.Null(savedState);
+        }
     }
 }
