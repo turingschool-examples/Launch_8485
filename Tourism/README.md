@@ -51,29 +51,28 @@ Your goal for this assessment is to have an application that allows a user to do
 1. Filter states by time zone using a link on the State Index page.
 1. Delete a state using a button on the State Index page.
 
-Create a separate branch for each exercise. Merge each branch into `main` after completing each exercise.
+Note: You may need to make changes to the Models, Views, and/or Controllers in this application.
+Pro Tip: Create a separate branch for each exercise. Merge each branch into `main` after completing each exercise.
 
 ### Editing a State (5 points)
 
 Update the application so that a user can edit an existing State using a pre-populated form.
 * e.g. The time zone for `Oregon` should be changed to `Pacific`.
+* This feature should pass the `Edit_` and `Update_` tests found in `AssessmentTests`.
 * Do not break any currently passing tests.
 
-Note: Be sure to merge this branch into `main`!
+Note: If you created a new branch, be sure to merge this branch into `main`!
 
 ### Filter States by Time Zone (5 points)
 
 Update the application so that a user can filter States by time zone using links on the State Index page.
 * The links should list only the time zones represented in the data.
-* Include one additional list to display `All States`.
-	* The application should only display States in the selected time zone.
-	* The `Clear Filter` link should display all States.
+* Include one additional link to display `All States`.
 * e.g. Filtering on `Central` should display the states of `Iowa` and `Texas`.
+* This feature should pass the `Index_` tests found in `AssessmentTests`.
 * Do not break any currently passing tests.
 
-* the following links: `Eastern`, `Central`, `Mountain`, `Pacific`, `Clear Filter`.
-
-Note: Be sure to merge this branch into `main`!
+Note: If you created a new branch, be sure to merge this branch into `main`!
 
 ### Delete a State (5 points)
 
@@ -81,9 +80,10 @@ Update the application so that the user can delete a State using a button on the
 * The deleted state should no longer appear on the State Index page.
 * Deleting a state should also delete all cities in that state.
 * e.g. `British Columbia` is not a U.S. state. It should be deleted.
+* This feature should pass the `Delete_` tests found in `AssessmentTests`.
 * Do not break any currently passing tests.
 
-Note: Be sure to merge this branch into `main`!
+Note: If you created a new branch, be sure to merge this branch into `main`!
 
 ## Questions (5 points)
 

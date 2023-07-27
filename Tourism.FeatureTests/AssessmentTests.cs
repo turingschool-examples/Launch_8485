@@ -40,9 +40,7 @@ namespace Tourism.FeatureTests
             var client = _factory.CreateClient();
 
             State california = new State { Name = "California", Abbreviation = "CA", TimeZone = "Pacific" };
-            State ohio = new State { Name = "Ohio", Abbreviation = "OH", TimeZone = "Eastern" };
             context.States.Add(california);
-            context.States.Add(ohio);
             context.SaveChanges();
 
             // Act
@@ -63,9 +61,7 @@ namespace Tourism.FeatureTests
             var context = GetDbContext();
             var client = _factory.CreateClient();
 
-            State california = new State { Name = "California", Abbreviation = "CA", TimeZone = "Pacific" };
             State ohio = new State { Name = "Ohio", Abbreviation = "OH", TimeZone = "Mountain" };
-            context.States.Add(california);
             context.States.Add(ohio);
             context.SaveChanges();
 
@@ -93,11 +89,9 @@ namespace Tourism.FeatureTests
         {
             var context = GetDbContext();
             State california = new State { Name = "California", Abbreviation = "CA", TimeZone = "Pacific" };
-            //State wyoming = new State { Name = "Wyoming", Abbreviation = "WY", TimeZone = "Mountain" };
             State illinois = new State { Name = "Illinois", Abbreviation = "IL", TimeZone = "Central" };
             State ohio = new State { Name = "Ohio", Abbreviation = "OH", TimeZone = "Eastern" };
             context.States.Add(california);
-            //context.States.Add(wyoming);
             context.States.Add(illinois);
             context.States.Add(ohio);
             context.SaveChanges();
@@ -107,7 +101,6 @@ namespace Tourism.FeatureTests
             var html = await response.Content.ReadAsStringAsync();
 
             Assert.Contains("<a href=\"/states?time_zone=Pacific\">Pacific</a>", html);
-            //Assert.Contains("<a href=\"/states?time_zone=Mountain\">Mountain</a>", html);
             Assert.Contains("<a href=\"/states?time_zone=Central\">Central</a>", html);
             Assert.Contains("<a href=\"/states?time_zone=Eastern\">Eastern</a>", html);
             Assert.Contains("<a href=\"/states\">All States</a>", html);
@@ -120,11 +113,9 @@ namespace Tourism.FeatureTests
         {
             var context = GetDbContext();
             State california = new State { Name = "California", Abbreviation = "CA", TimeZone = "Pacific" };
-            //State wyoming = new State { Name = "Wyoming", Abbreviation = "WY", TimeZone = "Mountain" };
             State illinois = new State { Name = "Illinois", Abbreviation = "IL", TimeZone = "Central" };
             State ohio = new State { Name = "Ohio", Abbreviation = "OH", TimeZone = "Eastern" };
             context.States.Add(california);
-            //context.States.Add(wyoming);
             context.States.Add(illinois);
             context.States.Add(ohio);
             context.SaveChanges();
